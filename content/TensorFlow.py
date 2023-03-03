@@ -24,6 +24,10 @@ def reset_random_seeds():
 
 mnist = tf.keras.datasets.mnist
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
+# <<< Downloading data from https://storage.googleapis.com/tensorflow/tf-keras-datasets/mnist.npz
+# <<< [output omitted]
+# <<< 11490434/11490434 [==============================] - 0s 0us/step
+
 x_train, x_test = x_train / 255.0, x_test / 255.0
 reset_random_seeds()
 model = tf.keras.models.Sequential(
