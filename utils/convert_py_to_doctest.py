@@ -17,13 +17,16 @@ def convert_py_to_doctest(
 
     result = []
     result.append('r"""')
-    result.append(">>> import doctest")
-    result.append(f">>> doctest.ELLIPSIS_MARKER = {config.DOCTEST_ELLIPSIS_MARKER!r}")
+    if config.DOCTEST_ELLIPSIS_MARKER != "...":
+        result.append(">>> import doctest")
+        result.append(
+            f">>> doctest.ELLIPSIS_MARKER = {config.DOCTEST_ELLIPSIS_MARKER!r}"
+        )
     i = 0
     while i < len(lines):
         if lines[i].startswith(config.OUTPUT_MARKER):
             if result[-1][:4] in {">>> ", "... "}:
-                result[-1] += "  # doctest: +ELLIPSIS"
+                result[-1] += "  # doctest: +ELLIPSIS, +NORMALIZE_WHITESPACE"
             result.append(lines[i][6:])
         elif lines[i] == "":
             result.append("")
