@@ -10,7 +10,7 @@ import numpy as np
 import tensorflow as tf
 
 print("TensorFlow version:", tf.__version__)
-# <<< TensorFlow version: 2.[output omitted]
+# <<< TensorFlow version: 2...
 
 
 # For some reason, this is required. `tf.random.set_seed` alone is not enough.
@@ -25,8 +25,8 @@ def reset_random_seeds():
 mnist = tf.keras.datasets.mnist
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
 # <<< Downloading data from https://storage.googleapis.com/tensorflow/tf-keras-datasets/mnist.npz
-# <<< [output omitted]
-# <<< 11490434/11490434 [==============================] - 0s 0us/step
+# <<< ...
+# <<< 11490434/11490434 [==============================] - ...s ...s/step
 
 x_train, x_test = x_train / 255.0, x_test / 255.0
 reset_random_seeds()
@@ -54,16 +54,21 @@ model.compile(optimizer="adam", loss=loss_fn, metrics=["accuracy"])
 
 model.fit(x_train, y_train, epochs=5)
 # <<< Epoch 1/5
-# <<< [output omitted]
+# <<< ...
+# <<< 1875/1875 [==============================] - ...s ...s/step - loss: 0.2982 - accuracy: 0.9143
 # <<< Epoch 2/5
-# <<< [output omitted]
+# <<< ...
+# <<< 1875/1875 [==============================] - ...s ...s/step - loss: 0.1452 - accuracy: 0.9571
 # <<< Epoch 3/5
-# <<< [output omitted]
+# <<< ...
+# <<< 1875/1875 [==============================] - ...s ...s/step - loss: 0.1078 - accuracy: 0.9673
 # <<< Epoch 4/5
-# <<< [output omitted]
+# <<< ...
+# <<< 1875/1875 [==============================] - ...s ...s/step - loss: 0.0881 - accuracy: 0.972...
 # <<< Epoch 5/5
-# <<< [output omitted]
-# <<< <keras.callbacks.History object at [output omitted]>
+# <<< ...
+# <<< 1875/1875 [==============================] - ...s ...s/step - loss: 0.075... - accuracy: 0.976...
+# <<< <keras.callbacks.History object at ...>
 model.evaluate(x_test, y_test, verbose=2)
-# <<< 313/313 - [output omitted]s - loss: 0.0703 - accuracy: 0.9776 - [output omitted]s/epoch - [output omitted]s/step
-# <<< [0.07030097395181656, 0.9775999784469604]
+# <<< 313/313 - ...s - loss: 0.07... - accuracy: 0.977... - ...s/epoch - ...s/step
+# <<< [0.07..., 0.9775...]
