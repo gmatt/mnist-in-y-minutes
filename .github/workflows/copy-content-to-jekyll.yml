@@ -2,8 +2,8 @@ name: Copy content to Jekyll
 
 on:
   push:
-    paths:
-      - content/*.py
+#    paths:
+#      - content/*.py
 
 jobs:
   build:
