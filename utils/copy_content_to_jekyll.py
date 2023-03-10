@@ -19,7 +19,9 @@ layout: page
 {python_content}
 ```
 """
-        (output_dir / f"{python_file.stem}.markdown").write_text(result)
+        output_file = output_dir / f"{python_file.stem}.markdown"
+        output_file.write_text(result)
+        print(f"Written to '{output_file}'.")
 
 
 if __name__ == "__main__":
