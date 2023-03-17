@@ -1,5 +1,6 @@
 import argparse
 import ast
+import sys
 from pathlib import Path
 
 import config
@@ -9,6 +10,11 @@ def convert_py_to_doctest(
     source: str,
     target: str,
 ):
+    assert sys.version_info >= (3, 8), (
+        "This script only works with Python 3.8 or newer since it uses"
+        "ast.AST.end_lineno."
+    )
+
     text = Path(source).read_text()
 
     tree = ast.parse(text)
