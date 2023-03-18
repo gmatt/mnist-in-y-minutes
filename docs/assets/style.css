@@ -3,6 +3,18 @@
     font-family: "Roboto Slab", serif;
 }
 
+/*Header title icon*/
+.site-title .site-icon {
+    background-image: url("icon.png");
+    display: inline-block;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 1.5em;
+    height: 1.5em;
+    margin-bottom: -10px;
+    margin-right: 0.25em;
+}
+
 /*Highlight special code comments*/
 div.highlighter-rouge .highlight span.c1.output,
 div.highlighter-rouge .highlight span.c1.shell-command {
