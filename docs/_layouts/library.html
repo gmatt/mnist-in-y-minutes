@@ -9,7 +9,12 @@ layout: default
   </header>
 
   <div class="post-content">
+    {% assign site_name = page.name | replace: ".markdown", "" %}
     {{ content }}
+
+    <a href="https://github.com/gmatt/mnist-in-y-minutes/actions/workflows/doctest-{{ site_name }}.yml" target="_blank">
+      <img src="https://github.com/gmatt/mnist-in-y-minutes/actions/workflows/doctest-{{ site_name }}.yml/badge.svg" alt="Build status badge">
+    </a>
   </div>
 
 </article>
