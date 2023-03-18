@@ -17,3 +17,8 @@ div.highlighter-rouge .highlight span.c1.output {
 div.highlighter-rouge .highlight span.c1.shell-command {
     background-color: #dfd;
 }
+
+.highlighter-rouge .highlight,
+.highlighter-rouge .highlight code {
+    background-color: #eee;
+}
