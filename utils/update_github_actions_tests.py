@@ -7,7 +7,9 @@ def update_github_actions_tests():
     output_dir = PROJECT_ROOT / ".github" / "workflows"
 
     for python_file in input_dir.glob("*.py"):
-        result = f"""env:
+        result = f"""name: "doctest-{slugify(python_file.stem)}"
+
+env:
   FILE: "content/{python_file.name}"
 
 on:
