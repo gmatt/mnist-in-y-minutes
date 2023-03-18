@@ -46,7 +46,7 @@ def copy_content_to_jekyll():
         python_content = python_file.read_text()
         result = f"""---
 title: {python_file.stem}
-layout: page
+layout: library
 ---
 
 ```python

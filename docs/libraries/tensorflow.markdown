@@ -1,6 +1,6 @@
 ---
 title: TensorFlow
-layout: page
+layout: library
 ---
 
 ```python
