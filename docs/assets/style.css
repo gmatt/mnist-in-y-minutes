@@ -22,3 +22,21 @@ div.highlighter-rouge .highlight span.c1.shell-command {
 .highlighter-rouge .highlight code {
     background-color: #eee;
 }
+
+/*Set site content width*/
+.wrapper {
+    max-width: -webkit-calc(878px - (30px * 2));
+    max-width: calc(878px - (30px * 2));
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 30px;
+    padding-left: 30px;
+}
+@media screen and (max-width: 800px) {
+    .wrapper {
+        max-width: -webkit-calc(878px - (30px));
+        max-width: calc(878px - (30px));
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+}
