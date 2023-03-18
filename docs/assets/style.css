@@ -1,3 +1,19 @@
 .site-header .site-title {
     font-family: "Roboto Slab", serif;
 }
+
+div.highlighter-rouge .highlight span.c1.output,
+div.highlighter-rouge .highlight span.c1.shell-command {
+    display: block;
+    margin-left: -12px;
+    margin-right: -12px;
+    padding-left: 12px;
+}
+
+div.highlighter-rouge .highlight span.c1.output {
+    background-color: #def;
+}
+
+div.highlighter-rouge .highlight span.c1.shell-command {
+    background-color: #dfd;
+}

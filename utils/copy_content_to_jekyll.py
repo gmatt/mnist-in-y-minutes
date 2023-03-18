@@ -1,6 +1,7 @@
 import re
 import unicodedata
 from collections import defaultdict
+from pathlib import Path
 
 import config
 from constants import PROJECT_ROOT
@@ -56,6 +57,11 @@ layout: library
         output_file = output_dir / f"{slugify(python_file.stem)}.markdown"
         output_file.write_text(result)
         print(f"Written to '{output_file}'.")
+
+    input_file = Path(config.__file__)
+    output_file = PROJECT_ROOT / config.JEKYLL_ROOT / "assets" / "config.js"
+    output_file.write_text(input_file.read_text())
+    print(f"Written to '{output_file}'.")
 
 
 if __name__ == "__main__":
