@@ -56,7 +56,7 @@ jobs:
             eval "$line"
           done < <(grep "$SHELL_COMMAND_MARKER" "$FILE" | sed "s/$SHELL_COMMAND_MARKER//")
 
-          echo temp/test_doctest.py
+          cat temp/test_doctest.py
 
           pytest temp --doctest-modules --doctest-continue-on-failure --color=yes
 """
