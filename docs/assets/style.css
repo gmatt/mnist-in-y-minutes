@@ -1,7 +1,9 @@
+/*Header title font*/
 .site-header .site-title {
     font-family: "Roboto Slab", serif;
 }
 
+/*Highlight special code comments*/
 div.highlighter-rouge .highlight span.c1.output,
 div.highlighter-rouge .highlight span.c1.shell-command {
     display: block;
@@ -18,6 +20,7 @@ div.highlighter-rouge .highlight span.c1.shell-command {
     background-color: #dfd;
 }
 
+/*Code highlight background color*/
 .highlighter-rouge .highlight,
 .highlighter-rouge .highlight code {
     background-color: #eee;
