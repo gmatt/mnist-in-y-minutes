@@ -9,14 +9,22 @@ layout: default
   </header>
 
   <div class="post-content">
-    {% assign site_name = page.name | replace: ".markdown", "" %}
+    {% assign page_name = page.name | replace: ".markdown", "" %}
+
     {{ content }}
 
-    <a href="https://github.com/gmatt/mnist-in-y-minutes/actions/workflows/doctest-{{ site_name }}.yml" target="_blank">
-      <img src="https://github.com/gmatt/mnist-in-y-minutes/actions/workflows/doctest-{{ site_name }}.yml/badge.svg" alt="Build status badge">
-      <br>
-      <img src="https://github-actions.40ants.com/gmatt/mnist-in-y-minutes/matrix.svg?only=doctest-{{ site_name }}" alt="Build status badge">
-    </a>
+    <p>
+      <a href="https://github.com/gmatt/mnist-in-y-minutes/actions/workflows/doctest-{{ page_name }}.yml" target="_blank">
+        <img src="https://github.com/gmatt/mnist-in-y-minutes/actions/workflows/doctest-{{ page_name }}.yml/badge.svg" alt="Build status badge">
+        <br>
+        <img src="https://github-actions.40ants.com/gmatt/mnist-in-y-minutes/matrix.svg?only=doctest-{{ page_name }}" alt="Build status badge">
+      </a>
+    </p>
+
+    <p>
+      <a href="https://github.com/gmatt/mnist-in-y-minutes/edit/main/content/{{ page.title }}.py">✏️ Suggest changes</a><br>
+      <a href="https://github.com/gmatt/mnist-in-y-minutes/issues/new?title=Issue with {{ page.title }}">💬 Report an issue</a><br>
+    </p>
   </div>
 
 </article>

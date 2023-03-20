@@ -16,3 +16,7 @@ Inspired by [learnxinyminutes.com](https://learnxinyminutes.com).
 ## <a href="{{ page.url | relative_url }}">{{ page.title }}</a>
     {% endif %}
 {% endfor %}
+
+<a href="https://github.com/gmatt/mnist-in-y-minutes/new/main/content">➕ Add a new library</a>
+
+<a href="https://github.com/gmatt/mnist-in-y-minutes/blob/main/.github/CONTRIBUTING.md">❔ How to contribute</a>
