@@ -7,15 +7,12 @@ import config
 
 
 def convert_py_to_doctest(
-    source: str,
-    target: str,
-):
+    text: str,
+) -> str:
     assert sys.version_info >= (3, 8), (
         "This script only works with Python 3.8 or newer since it uses"
         "ast.AST.end_lineno."
     )
-
-    text = Path(source).read_text()
 
     tree = ast.parse(text)
     lines = text.splitlines()
@@ -53,7 +50,7 @@ if __name__ == "__main__":
 """
     )
 
-    Path(target).write_text("\n".join(result))
+    return "\n".join(result)
 
 
 if __name__ == "__main__":
@@ -62,5 +59,5 @@ if __name__ == "__main__":
     parser.add_argument("target", help="Where to save the file with the doctest.")
     args = parser.parse_args()
 
-    convert_py_to_doctest(args.source, args.target)
+    Path(args.target).write_text(convert_py_to_doctest(Path(args.source).read_text()))
     print(f"Written output to '{args.target}'.")
