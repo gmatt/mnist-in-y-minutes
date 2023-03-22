@@ -5,6 +5,6 @@
 layout: home
 ---
 
-Quickly get started with machine learning libraries.
+Quickly get started with machine learning Python libraries.
 
 Inspired by [learnxinyminutes.com](https://learnxinyminutes.com).
