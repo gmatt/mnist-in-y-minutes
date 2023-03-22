@@ -1,9 +1,9 @@
-/*Header title font*/
+/* Header title font */
 .site-header .site-title {
     font-family: "Roboto Slab", serif;
 }
 
-/*Header title icon*/
+/* Header title icon */
 .site-title .site-icon {
     background-image: url("icon.png");
     display: inline-block;
@@ -15,7 +15,7 @@
     margin-right: 0.25em;
 }
 
-/*Home page library rows*/
+/* Home page library rows */
 .library-row {
     display: flex;
     align-items: baseline;
@@ -29,7 +29,7 @@
     margin-bottom: 15px;
 }
 
-/*Highlight special code comments*/
+/* Highlight special code comments */
 div.highlighter-rouge .highlight span.c1.output,
 div.highlighter-rouge .highlight span.c1.shell-command {
     display: block;
@@ -46,13 +46,13 @@ div.highlighter-rouge .highlight span.c1.shell-command {
     background-color: #dfd;
 }
 
-/*Code highlight background color*/
+/* Code highlight background color */
 .highlighter-rouge .highlight,
 .highlighter-rouge .highlight code {
     background-color: #eee;
 }
 
-/*Set site content width*/
+/* Set site content width */
 .wrapper {
     max-width: -webkit-calc(878px - (30px * 2));
     max-width: calc(878px - (30px * 2));
