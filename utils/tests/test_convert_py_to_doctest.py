@@ -165,3 +165,18 @@ def test_decorator():
     )
 
     assert convert_py_to_doctest(py, **kwargs) == expected
+
+
+@pytest.mark.skip(reason="not implemented")
+def test_triple_quoted_string_works():
+    run_doctest_from_string(
+        convert_py_to_doctest(
+            dedent(
+                '''\
+                """
+                comment
+                """
+                '''
+            )
+        )
+    )
