@@ -10,19 +10,39 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
       - name: Set up Python 3.10
         uses: actions/setup-python@v3
         with:
           python-version: "3.10"
-      - name: Install dependencies
+      - name: Install pytest
         run: |
           python -m pip install --upgrade pip
           pip install pytest
-          pip install tensorflow
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-      - name: Test with pytest
+      - name: Get changed files in the content folder
+        id: changed-files
+        uses: tj-actions/changed-files@v35
+        with:
+          files: content/*.py
+      - name: Test with pytest and doctest
         run: |
-          mkdir temp
-          python utils/convert_py_to_doctest.py content/TensorFlow.py temp/test_TensorFlow.py
-          pytest temp --doctest-modules --doctest-continue-on-failure --color=yes
+          SHELL_COMMAND_MARKER="$(python -c "from utils import config; print(config.SHELL_COMMAND_MARKER)")"
+
+          for FILE in ${{ steps.changed-files.outputs.all_changed_files }}; do
+            echo "$FILE was changed"
+
+            mkdir temp
+            echo "Convert .py file to doctest"
+            python utils/convert_py_to_doctest.py "$FILE" temp/test_doctest.py
+
+            echo "Run shell commands marked in the file"
+            while read -r line; do
+              echo "$line"
+              eval "$line"
+            done < <(grep "$SHELL_COMMAND_MARKER" "$FILE" | sed "s/$SHELL_COMMAND_MARKER//")
+
+            echo "Test with pytest and doctest"
+            cat temp/test_doctest.py
+            pytest temp/test_doctest.py --doctest-modules --doctest-continue-on-failure --color=yes
+          done

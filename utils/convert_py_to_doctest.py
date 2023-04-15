@@ -7,22 +7,27 @@ import config
 
 
 def convert_py_to_doctest(
-    source: str,
-    target: str,
-):
+    py_source_code: str,
+    *,
+    header: str = 'r"""\n',
+    footer: str = '''
+"""
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+''',
+) -> str:
     assert sys.version_info >= (3, 8), (
         "This script only works with Python 3.8 or newer since it uses"
         "ast.AST.end_lineno."
     )
 
-    text = Path(source).read_text()
-
-    tree = ast.parse(text)
-    lines = text.splitlines()
+    tree = ast.parse(py_source_code)
+    lines = py_source_code.splitlines()
     lineno_to_node: dict[int, ast.stmt] = {node.lineno - 1: node for node in tree.body}
 
     result = []
-    result.append('r"""')
     if config.DOCTEST_ELLIPSIS_MARKER != "...":
         result.append(">>> import doctest")
         result.append(
@@ -43,17 +48,9 @@ def convert_py_to_doctest(
                     result.append("... " + lines[j])
                     i += 1
         i += 1
-    result.append('"""')
 
-    result.append(
-        """
-if __name__ == "__main__":
-    import doctest
-    doctest.testmod()
-"""
-    )
-
-    Path(target).write_text("\n".join(result))
+    result = "\n".join(result)
+    return header + result + footer
 
 
 if __name__ == "__main__":
@@ -62,5 +59,5 @@ if __name__ == "__main__":
     parser.add_argument("target", help="Where to save the file with the doctest.")
     args = parser.parse_args()
 
-    convert_py_to_doctest(args.source, args.target)
+    Path(args.target).write_text(convert_py_to_doctest(Path(args.source).read_text()))
     print(f"Written output to '{args.target}'.")

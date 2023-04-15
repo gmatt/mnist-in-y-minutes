@@ -3,32 +3,40 @@ layout: default
 ---
 
 <div class="home">
-  {%- if page.title -%}
-    <h1 class="page-heading">{{ page.title }}</h1>
-  {%- endif -%}
+    {%- if page.title -%}
+        <h1 class="page-heading">{{ page.title }}</h1>
+    {%- endif -%}
 
-  {{ content }}
+    {{ content }}
 
-  {%- if site.posts.size > 0 -%}
-    <h2 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h2>
-    <ul class="post-list">
-      {%- for post in site.posts -%}
-      <li>
-        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-        <span class="post-meta">{{ post.date | date: date_format }}</span>
-        <h3>
-          <a class="post-link" href="{{ post.url | relative_url }}">
-            {{ post.title | escape }}
-          </a>
-        </h3>
-        {%- if site.show_excerpts -%}
-          {{ post.excerpt }}
-        {%- endif -%}
-      </li>
-      {%- endfor -%}
-    </ul>
+    <h1>Libraries</h1>
 
-    <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
-  {%- endif -%}
+    {% for page in site.pages %}
+        {% if page.url contains '/libraries/' %}
+            {% assign lines = page.content | newline_to_br | split: '<br />' %}
+            {% assign pip_install_line = '' %}
+            {% for line in lines %}
+                {% if line contains '# ! pip install ' %}
+                    {% assign pip_install_line = line | replace: '# ! ', '' %}
+                    {% break %}
+                {% endif %}
+            {% endfor %}
+
+            <div class="library-row">
+                <h2><a href="{{ page.url | relative_url }}">{{ page.title }}</a></h2>
+                <div><code class="language-bash highlighter-rouge">{{ pip_install_line }}</code></div>
+            </div>
+        {% endif %}
+    {% endfor %}
+
+    {% comment %}
+        Filename contains .py extension for convenience. This solution is buggy as of 2023-03-22, but seems the best option.
+        https://github.com/isaacs/github/issues/1527
+    {% endcomment %}
+    <p><a href="https://github.com/gmatt/mnist-in-y-minutes/new/main?filename=/content/.py">➕ Add a new library</a></p>
+
+    <p>
+        <a href="https://github.com/gmatt/mnist-in-y-minutes/blob/main/.github/CONTRIBUTING.md">❔ How to contribute</a>
+    </p>
 
 </div>

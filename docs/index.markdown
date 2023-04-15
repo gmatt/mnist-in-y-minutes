@@ -5,14 +5,6 @@
 layout: home
 ---
 
-Quickly get started with machine learning libraries.
+Quickly get started with machine learning Python libraries.
 
 Inspired by [learnxinyminutes.com](https://learnxinyminutes.com).
-
-# Libraries
-
-{% for page in site.pages %}
-    {% if page.url contains '/libraries/' %}
-## <a href="{{ page.url | relative_url }}">{{ page.title }}</a>
-    {% endif %}
-{% endfor %}

@@ -1,9 +1,35 @@
-/*Header title font*/
+/* Header title font */
 .site-header .site-title {
     font-family: "Roboto Slab", serif;
 }
 
-/*Highlight special code comments*/
+/* Header title icon */
+.site-title .site-icon {
+    background-image: url("icon.png");
+    display: inline-block;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 1.5em;
+    height: 1.5em;
+    margin-bottom: -10px;
+    margin-right: 0.25em;
+}
+
+/* Home page library rows */
+.library-row {
+    display: flex;
+    align-items: baseline;
+    gap: 1em;
+    /*Align title to center, with h2s having margin-bottom: 15px*/
+    margin-top: 15px;
+    border-bottom: 1px solid lightgray;
+}
+
+.library-row:last-of-type {
+    margin-bottom: 15px;
+}
+
+/* Highlight special code comments */
 div.highlighter-rouge .highlight span.c1.output,
 div.highlighter-rouge .highlight span.c1.shell-command {
     display: block;
@@ -20,13 +46,13 @@ div.highlighter-rouge .highlight span.c1.shell-command {
     background-color: #dfd;
 }
 
-/*Code highlight background color*/
+/* Code highlight background color */
 .highlighter-rouge .highlight,
 .highlighter-rouge .highlight code {
     background-color: #eee;
 }
 
-/*Set site content width*/
+/* Set site content width */
 .wrapper {
     max-width: -webkit-calc(878px - (30px * 2));
     max-width: calc(878px - (30px * 2));
